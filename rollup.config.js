@@ -54,6 +54,12 @@ export default {
     chunkFileNames: `[name]${(production && "-[hash]") || ""}.js`,
   },
   plugins: [
+    /* 
+    TODO: Enable urql in project, else remove this replace block.
+    production // process undefined fix for @urql/svelte
+      ? replace({ "process.env.NODE_ENV": JSON.stringify("production") })
+      : replace({ "process.env.NODE_ENV": JSON.stringify("development") }),
+    */
     svelte({
       dev: !production, // run-time checks
       // Extract component CSS — better performance
@@ -94,6 +100,16 @@ export default {
       mode: "production",
     }),
     production && copyToDist(),
+    /* 
+    TODO: Add your FaunaDB URL as a link here for easy access.
+    !production && // log DB API link
+      setTimeout(() => {
+        const msg =
+          "\nView GraphQL Playground to explore your site's data and schema\n\n  ";
+        const link = "https://dashboard.fauna.com/graphql/@db/your-db-name";
+        console.log(msg, "\x1b[35m\x1b[47m", link, "\x1b[0m", "\n");
+      }, 0),
+    */
   ],
   watch: {
     clearScreen: false,
