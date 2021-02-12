@@ -6,7 +6,6 @@ src/tmp/
 .routify
 .netlify
 assets/build
-.vercel
 yarn-error.log
 .env
 .faunarc
