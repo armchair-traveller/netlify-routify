@@ -6,4 +6,5 @@ src/tmp/
 .routify
 .netlify
 assets/build
-.vercel
+.env
+.vscode
